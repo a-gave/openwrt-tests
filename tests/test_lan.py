@@ -1,6 +1,7 @@
 from ipaddress import IPv4Interface
 from time import sleep
 
+import pytest
 from conftest import ubus_call
 
 
@@ -23,11 +24,13 @@ def test_lan_wait_for_network(shell_command):
     assert False, "LAN interface did not come up within 60 seconds"
 
 
+@pytest.mark.lg_feature("openwrt")
 def test_lan_interface_address(shell_command):
     assert shell_command.get_ip_addresses("br-lan")[0] == IPv4Interface(
         "192.168.1.1/24"
     )
 
 
+@pytest.mark.lg_feature("lan-neighbours")
 def test_lan_interface_has_neighbor(shell_command):
     assert "DUP!" in "\n".join(shell_command.run("ping -c 3 ff02::1%br-lan")[0])
