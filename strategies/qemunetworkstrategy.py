@@ -13,8 +13,10 @@
 # limitations under the License.
 
 import enum
+from time import sleep
 
 import attr
+from conftest import ubus_call
 from labgrid import step, target_factory
 from labgrid.strategy import Strategy, StrategyError
 from labgrid.util import get_free_port
@@ -49,7 +51,7 @@ class QEMUNetworkStrategy(Strategy):
     @step()
     def update_network_service(self):
         self.shell.run("ubus wait_for network.interface.lan")
-        while True :
+        while True:
             lan_status = ubus_call(self.shell, "network.interface.lan", "status").get(
                 "ipv4-address"
             )

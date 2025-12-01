@@ -13,11 +13,11 @@
 # limitations under the License.
 
 import json
-import time
-import shlex
-import re
-import subprocess
 import logging
+import re
+import shlex
+import subprocess
+import time
 from os import getenv
 
 import pytest
@@ -76,15 +76,18 @@ def _host_ipv4_from_hostname_I() -> str:
     # take the first token; if it's not IPv4, fall back to first IPv4 token
     first = out.split()[0]
     if ":" in first:
-        first = next((t for t in out.split() if re.match(r"^\d{1,3}(\.\d{1,3}){3}$", t)), "")
+        first = next(
+            (t for t in out.split() if re.match(r"^\d{1,3}(\.\d{1,3}){3}$", t)), ""
+        )
     if not re.match(r"^\d{1,3}(\.\d{1,3}){3}$", first or ""):
         raise RuntimeError(f"Could not determine IPv4 from: {out!r}")
     return first
 
+
 @pytest.fixture
-def upload_vwifi(shell_command,target):
+def upload_vwifi(shell_command, target):
     ssh = target.get_driver("SSHDriver")
-    ssh.scp(src="vwifi/vwifi-client",dst=":/usr/bin/vwifi-client")
+    ssh.scp(src="vwifi/vwifi-client", dst=":/usr/bin/vwifi-client")
     path = "\n".join(ssh.run("which vwifi-client")[0])
     assert path == "/usr/bin/vwifi-client"
 
@@ -111,13 +114,13 @@ def upload_vwifi(shell_command,target):
     ssh.run("wifi up")
     time.sleep(10)
     phy_devices = ssh.run("iw phy | grep phy")[0]
-    assert len(phy_devices) == 4 #labgrid tokenize \t 
-    iw_devices = "\n".join(ssh.run("iw dev")[0])                                      
-    while "wlan0-mesh" not in iw_devices:                                                     
-        iw_devices = "\n".join(ssh.run("iw dev")[0])                                  
-        time.sleep(2)                                                                         
-    stations = "\n".join(ssh.run("iw dev wlan0-mesh station dump")[0])                
-    assert "02:00:00:00:00:01" in stations                                                    
-    assert "02:00:00:00:00:02" in stations                                                    
-    assert "02:00:00:00:00:03" in stations 
+    assert len(phy_devices) == 4  # labgrid tokenize \t
+    iw_devices = "\n".join(ssh.run("iw dev")[0])
+    while "wlan0-mesh" not in iw_devices:
+        iw_devices = "\n".join(ssh.run("iw dev")[0])
+        time.sleep(2)
+    stations = "\n".join(ssh.run("iw dev wlan0-mesh station dump")[0])
+    assert "02:00:00:00:00:01" in stations
+    assert "02:00:00:00:00:02" in stations
+    assert "02:00:00:00:00:03" in stations
     return ssh
