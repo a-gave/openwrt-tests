@@ -1,4 +1,4 @@
-name: Daily test for snapshots and stable releases
+name: Daily test for snapshots and stable releases (asu)
 on:
   push:
     branches:
@@ -9,14 +9,15 @@ on:
         description: 'Override OpenWrt version to specific release (e.g. 23.05.3, 22.03.6)'
         required: false
         default: ''
-  # schedule:
-  #   - cron: "0 0 * * *"
+  schedule:
+    - cron: "0 0 * * *"
 
 env:
   PYTHONUNBUFFERED: "1"
   PYTEST_ADDOPTS: "--color=yes"
   LG_CONSOLE: "internal"
   USER: "labgrid-dev"
+  ASU_URL: "sysupgrade.antennine.org"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -93,9 +94,7 @@ jobs:
 
           # Create QEMU matrix
           qemu_base='[
-            {"target": "malta-be", "firmware": "vmlinux-initramfs.elf", "dependency": "qemu-system-mips"},
-            {"target": "x86-64", "firmware": "generic-squashfs-combined.img.gz", "dependency": "qemu-system-x86"},
-            {"target": "armsr-armv8", "firmware": "generic-initramfs-kernel.bin", "dependency": "qemu-system-aarch64"}
+            {"target": "x86-64", "firmware": "generic-squashfs-combined.img.gz", "dependency": "qemu-system-x86", "arch": "x86_64"}
           ]'
           qemu_matrix=$(echo "$qemu_base" | jq --argjson versions "$versions" '
             [.[] as $qemu | $versions[] as $version | $qemu + {"version_url": $version.version_url, "version_name": $version.name}]
@@ -155,50 +154,137 @@ jobs:
             nmap \
             ${{ matrix.dependency }}
 
-          echo "LG_ENV=targets/qemu_${{ matrix.target }}.yaml" >> $GITHUB_ENV
+          echo "LG_ENV=targets/qemu-libremesh-${{ matrix.target }}.yaml" >> $GITHUB_ENV
           echo "VERSION_NAME=${{ matrix.version_name }}" >> $GITHUB_ENV
 
       - name: Install uv
         uses: astral-sh/setup-uv@v7
 
-      - name: Download test firmware
+      - name: Request to build the test firmwares
         env:
           target: ${{ matrix.target }}
+          arch: ${{ matrix.arch }}
           VERSION_NAME: ${{ matrix.version_name }}
           UPSTREAM_URL: ${{ matrix.version_url }}
+          ASU_URL: ${{ env.ASU_URL }}
+          build_json: ""
         run: |
+          PKG_DB=/packages.adb
+          LIME_PUBKEY="-----BEGIN PUBLIC KEY-----\n\
+          MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEdFJZ2qVti49Ol8LJZYuxgOCLowBS\n\
+          8bI86a7zqhSbs5yon3JON7Yee7CQOgqwPOX5eMALGOu8iFGAqIRx5YjfYA==\n\
+          -----END PUBLIC KEY-----"
+          target=${target/-/\/}
+
+          case $VERSION_NAME in
+            snapshot)
+              ASU_BUILD_VERSION=SNAPSHOT
+              LIME_FEED_PATH=openwrt-main
+              echo "LG_FEATURE_APK=true" >> $GITHUB_ENV
+            ;;
+            *.*)
+              ASU_BUILD_VERSION=$VERSION_NAME-SNAPSHOT
+              LIME_FEED_PATH=openwrt-$VERSION_NAME
+              if [ ${VERSION_NAME:0:2} -lt 25 ]; then
+                PKG_DB=
+                LIME_PUBKEY="RWSnGzyChavSiyQ+vLk3x7F0NqcLa4kKyXCdriThMhO78ldHgxGljM/8"
+              else 
+                echo "LG_FEATURE_APK=true" >> $GITHUB_ENV
+              fi
+            ;;
+          esac
+
+          build_asu_request () {
+            cat << EOF > build_cmd.sh
+          #/bin/bash
+          curl -X 'POST' \
+            "https://$ASU_URL/api/v1/build" \
+            -H 'accept: application/json' \
+            -H 'Content-Type: application/json' \
+            -d '{
+            "distro": "openwrt",
+            "version": "$ASU_BUILD_VERSION",
+            "target": "$target",
+            "profile": "generic",
+            "packages": [
+              "-dnsmasq",
+              "-odhcpd-ipv6only",
+              "profile-libremesh-suggested-packages"
+            ],
+            "diff_packages": false,
+            "repositories": {
+              "libremesh": "https://feed.libremesh.org/master/$LIME_FEED_PATH/x86_64$PKG_DB",
+              "libremesh_arch_packages": "https://feed.libremesh.org/master/$LIME_FEED_PATH/$arch$PKG_DB",
+              "profiles": "https://feed.libremesh.org/profiles/$LIME_FEED_PATH/x86_64$PKG_DB"
+            },
+            "repository_keys": [ 
+              "$LIME_PUBKEY"
+            ],
+            "client": "github-ci"
+            }'
+          EOF
+
+            chmod +x ./build_cmd.sh
+            cat ./build_cmd.sh
+            res=$(./build_cmd.sh)
+
+            echo $res | jq
+            request_hash=$(echo $res | jq -r '.request_hash')
+
+            if [ -z "$request_hash" ]; then
+              echo "::warning::Build request failed. Skipping CI test."
+              echo "SKIP_TEST=true" >> tmpfile
+              exit 0
+            fi
+
+            echo "Wait up to 10 minutes"
+            for i in {1..10}; do
+              res="$(curl -s https://$ASU_URL/api/v1/build/$request_hash)"
+              echo $res
+              detail=$(echo $res | jq -r '.detail')
+              echo $detail
+              if [ $detail == "done" ]; then break; fi
+              sleep 5
+            done
+
+            build_json=$(curl -s https://$ASU_URL/api/v1/build/$request_hash)
+
+            echo $build_json | jq
+
+            profiles_json=$(curl -s https://$ASU_URL/store/$request_hash/profiles.json)
+            FIRMWARE_VERSION=$(echo $build_json | jq -r '.version_code')
+            image_prefix=$(echo $build_json | jq -r '.image_prefix' | sed 's|-generic||')
+          }
+
+          build_asu_request
+
           if [ "$VERSION_NAME" = "snapshot" ]; then
-            # Define labgrid features
-            echo "LG_FEATURE_APK=true" >> $GITHUB_ENV
 
             # Snapshot logic
-            firmware_name="openwrt-$target-${{ matrix.firmware }}"
-            if ! wget "$UPSTREAM_URL/${target/-/\/}/$firmware_name" \
+            firmware_name="$image_prefix-${{ matrix.firmware }}"
+            if ! wget "https://$ASU_URL/store/$request_hash/$firmware_name" \
               --output-document "$firmware_name"; then
               echo "::warning::Failed to download firmware $firmware_name. Skipping CI test."
               echo "SKIP_TEST=true" >> $GITHUB_ENV
               exit 0
             fi
-            FIRMWARE_VERSION=$(curl "$UPSTREAM_URL/${target/-/\/}/version.buildinfo")
           else
             # Stable release logic
-            profiles_url="$UPSTREAM_URL/${target/-/\/}/profiles.json"
-            profiles_json=$(curl -s "$profiles_url")
 
-            # Check if profiles.json was successfully downloaded
-            if [ -z "$profiles_json" ] || [ "$profiles_json" = "{}" ] || ! echo "$profiles_json" | jq empty 2>/dev/null; then
-              echo "::warning::Could not download or parse profiles.json from $profiles_url. Skipping CI test."
-              echo "SKIP_TEST=true" >> $GITHUB_ENV
-              exit 0
-            fi
+            # # Check if profiles.json was successfully downloaded
+            # if [ -z "$profiles_json" ] || [ "$profiles_json" = "{}" ] || ! echo "$profiles_json" | jq empty 2>/dev/null; then
+            #   echo "::warning::Could not download or parse profiles.json from $profiles_url. Skipping CI test."
+            #   echo "SKIP_TEST=true" >> $GITHUB_ENV
+            #   exit 0
+            # fi
 
-            # Check if the generic profile exists in profiles.json
-            profile_exists=$(echo "$profiles_json" | jq -r '.profiles | has("generic")')
-            if [ "$profile_exists" != "true" ]; then
-              echo "::warning::Profile 'generic' not found in profiles.json. Skipping CI test."
-              echo "SKIP_TEST=true" >> $GITHUB_ENV
-              exit 0
-            fi
+            # # Check if the generic profile exists in profiles.json
+            # profile_exists=$(echo "$profiles_json" | jq -r '.profiles | has("generic")')
+            # if [ "$profile_exists" != "true" ]; then
+            #   echo "::warning::Profile 'generic' not found in profiles.json. Skipping CI test."
+            #   echo "SKIP_TEST=true" >> $GITHUB_ENV
+            #   exit 0
+            # fi
 
             # Find the appropriate image for QEMU
             case "${{ matrix.firmware }}" in
@@ -224,30 +310,28 @@ jobs:
                 ;;
             esac
 
-            if [ -n "$filesystem" ]; then
-              firmware_name=$(echo "$profiles_json" | jq -r --arg type "$image_type" --arg fs "$filesystem" '
-                .profiles.generic.images[] | select(.type == $type and .filesystem == $fs) | .name
-              ')
-            else
-              firmware_name=$(echo "$profiles_json" | jq -r --arg type "$image_type" '
-                .profiles.generic.images[] | select(.type == $type) | .name
-              ')
-            fi
+            # if [ -n "$filesystem" ]; then
+            #   firmware_name=$(echo "$profiles_json" | jq -r --arg type "$image_type" --arg fs "$filesystem" '
+            #     .images[] | select(.type == $type and .filesystem == $fs) | .name
+            #   ')
+            # else
+            #   firmware_name=$(echo "$profiles_json" | jq -r --arg type "$image_type" '
+            #     .images[] | select(.type == $type) | .name
+            #   ')
+            # fi
 
             if [ -z "$firmware_name" ] || [ "$firmware_name" = "null" ]; then
               echo "Could not find firmware, falling back to constructed name"
-              image_prefix=$(echo "$profiles_json" | jq -r '.profiles.generic.image_prefix')
               firmware_name="$image_prefix-${{ matrix.firmware }}"
             fi
 
             echo "Using firmware: $firmware_name"
-            if ! wget "$UPSTREAM_URL/${target/-/\/}/$firmware_name" \
+            if ! wget "https://$ASU_URL/store/$request_hash/$firmware_name" \
               --output-document "$firmware_name"; then
               echo "::warning::Failed to download firmware $firmware_name. Skipping CI test."
               echo "SKIP_TEST=true" >> $GITHUB_ENV
               exit 0
             fi
-            FIRMWARE_VERSION=$(echo "$profiles_json" | jq -r '.version_code')
           fi
 
           echo "FIRMWARE_VERSION=$FIRMWARE_VERSION" >> $GITHUB_ENV
