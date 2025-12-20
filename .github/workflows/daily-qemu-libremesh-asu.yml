@@ -209,7 +209,8 @@ jobs:
             "packages": [
               "-dnsmasq",
               "-odhcpd-ipv6only",
-              "profile-libremesh-suggested-packages"
+              "profile-libremesh-suggested-packages",
+              "kmod-mac80211-hwsim"
             ],
             "diff_packages": false,
             "repositories": {
@@ -244,7 +245,7 @@ jobs:
               detail=$(echo $res | jq -r '.detail')
               echo $detail
               if [ $detail == "done" ]; then break; fi
-              sleep 5
+              sleep 60
             done
 
             build_json=$(curl -s https://$ASU_URL/api/v1/build/$request_hash)
