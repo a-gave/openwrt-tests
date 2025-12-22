@@ -18,15 +18,15 @@ targets:
           cpu: max
           memory: 128M
           extra_args: "-device virtio-rng-pci -netdev user,id=wan -device virtio-net-pci,netdev=wan"
-          nic: "user,model=virtio-net-pci,net=10.13.0.0/16,id=lan"
+          nic: user,model=virtio-net-pci,net=10.13.0.0/16,id=lan
           disk: firmware
       - ShellDriver:
           login_prompt: Please press Enter to activate this console.
-          prompt: 'root@'
-          await_login_timeout: 30 
+          prompt: 'root@[\w()]+:[^ ]+ '
+          await_login_timeout: 15
           username: root
       - SSHDriver:
-          username: root
+          connection_timeout: 120.0
           explicit_scp_mode: True
       - QEMUNetworkStrategy: {}
 
