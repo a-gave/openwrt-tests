@@ -17,7 +17,7 @@ env:
   PYTEST_ADDOPTS: "--color=yes"
   LG_CONSOLE: "internal"
   USER: "labgrid-dev"
-  ASU_URL: "sysupgrade.antennine.org"
+  ASU_URL: "sysupgrade-01.antennine.org"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
