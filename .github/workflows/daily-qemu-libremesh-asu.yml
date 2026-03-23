@@ -238,13 +238,16 @@ jobs:
               exit 0
             fi
 
-            echo "Wait up to 10 minutes"
-            for i in {1..10}; do
+            echo "Wait up to 20 minutes"
+            for i in {1..20}; do
               res="$(curl -s https://$ASU_URL/api/v1/build/$request_hash)"
               echo $res
-              detail=$(echo $res | jq -r '.detail')
-              echo $detail
-              if [ $detail == "done" ]; then break; fi
+              # Check if response is a valid json, i.e. ignore "504 Gateway Time-out"
+              if jq -e . >/dev/null 2>&1 <<<"$res"; then
+                detail=$(echo $res | jq -r '.detail')
+                echo $detail
+                if [ $detail == "done" ]; then break; fi
+              fi
               sleep 60
             done
 
