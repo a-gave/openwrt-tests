@@ -175,6 +175,7 @@ jobs:
           8bI86a7zqhSbs5yon3JON7Yee7CQOgqwPOX5eMALGOu8iFGAqIRx5YjfYA==\n\
           -----END PUBLIC KEY-----"
           target=${target/-/\/}
+          ASU_BUILD_REQUEST_DATE=$(date -u)
 
           case $VERSION_NAME in
             snapshot)
@@ -212,6 +213,7 @@ jobs:
               "profile-libremesh-suggested-packages",
               "kmod-mac80211-hwsim"
             ],
+            "defaults": "echo $ASU_BUILD_REQUEST_DATE",
             "diff_packages": false,
             "repositories": {
               "libremesh": "https://feed.libremesh.org/master/$LIME_FEED_PATH/x86_64$PKG_DB",
