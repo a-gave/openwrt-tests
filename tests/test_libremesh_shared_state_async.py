@@ -40,7 +40,7 @@ def _canonical_link_key(mac_a, mac_b):
     return "".join(sorted([a, b]))
 
 
-@pytest.mark.lg_feature("libremesh")
+@pytest.mark.lg_feature("hwsim")
 def test_bat_links_info(upload_vwifi):
     ssh_command = upload_vwifi
     link_key_N1234_N1 = _canonical_link_key(MAC1234, MAC1)
