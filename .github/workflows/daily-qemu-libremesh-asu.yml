@@ -210,7 +210,16 @@ jobs:
             "packages": [
               "-dnsmasq",
               "-odhcpd-ipv6only",
-              "profile-libremesh-suggested-packages",
+              "-ppp",
+              "-ppp-mod-pppoe",
+              "babeld-auto-gw-mode",
+              "lime-docs-minimal",
+              "lime-hwd-openwrt-wan",
+              "lime-proto-anygw",
+              "lime-proto-babeld",
+              "lime-proto-batadv",
+              "shared-state",
+              "shared-state-babeld_hosts",
               "kmod-mac80211-hwsim"
             ],
             "defaults": "echo $ASU_BUILD_REQUEST_DATE",
