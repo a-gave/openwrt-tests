@@ -1,8 +1,8 @@
 Labgrid Console Logfile for main
-Logfile started at 2026-08-17 00:50:41.519554
+Logfile started at 2026-08-18 00:49:59.851074
 === Log starts here ===
 [    0.000000] Booting Linux on physical CPU 0x0000000000 [0x411fd070]
-[    0.000000] Linux version 6.18.44 (builder@buildhost) (aarch64-openwrt-linux-musl-gcc (OpenWrt GCC 14.4.0 r35836-20d94d5a2b) 14.4.0, GNU ld (GNU Binutils) 2.46.1) #0 SMP Sun Aug 16 10:33:20 2026
+[    0.000000] Linux version 6.18.44 (builder@buildhost) (aarch64-openwrt-linux-musl-gcc (OpenWrt GCC 14.4.0 r35840-1a77cc5e12) 14.4.0, GNU ld (GNU Binutils) 2.46.1) #0 SMP Mon Aug 17 19:30:40 2026
 [    0.000000] KASLR enabled
 [    0.000000] random: crng init done
 [    0.000000] Machine model: linux,dummy-virt
@@ -61,174 +61,174 @@ Logfile started at 2026-08-17 00:50:41.519554
 [    0.000000] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 19112604462750000 ns
 [    0.000000] arch_timer: cp15 timer running at 62.50MHz (virt).
 [    0.000000] clocksource: arch_sys_counter: mask: 0x1ffffffffffffff max_cycles: 0x1cd42e208c, max_idle_ns: 881590405314 ns
-[    0.000070] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
-[    0.003519] Console: colour dummy device 80x25
-[    0.004010] printk: legacy console [tty0] enabled
-[    0.008085] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=625000)
-[    0.008230] pid_max: default: 32768 minimum: 301
-[    0.013944] Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
-[    0.014000] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
-[    0.040107] cacheinfo: Unable to detect cache hierarchy for CPU 0
-[    0.050703] rcu: Hierarchical SRCU implementation.
-[    0.050792] rcu: 	Max phase no-delay instances is 1000.
-[    0.053827] EFI services will not be available.
-[    0.054586] smp: Bringing up secondary CPUs ...
-[    0.055284] smp: Brought up 1 node, 1 CPU
-[    0.055326] SMP: Total of 1 processors activated.
-[    0.055369] CPU: All CPU(s) started at EL1
-[    0.055615] CPU features: detected: 32-bit EL0 Support
-[    0.055647] CPU features: detected: 32-bit EL1 Support
-[    0.055725] CPU features: detected: CRC32 instructions
-[    0.061429] alternatives: applying system-wide alternatives
-[    0.073967] CPU features: emulated: Privileged Access Never (PAN) using TTBR0_EL1 switching
-[    0.087720] Memory: 55992K/131072K available (13312K kernel code, 1638K rwdata, 5084K rodata, 15936K init, 766K bss, 40972K reserved, 32768K cma-reserved)
-[    0.122760] posixtimers hash table entries: 512 (order: 1, 8192 bytes, linear)
-[    0.123079] futex hash table entries: 256 (16384 bytes on 1 NUMA nodes, total 16 KiB, linear).
-[    0.125291] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
-[    0.125468] 0 pages in range for non-PLT usage
-[    0.125527] 515040 pages in range for PLT usage
-[    0.126871] pinctrl core: initialized pinctrl subsystem
-[    0.138356] DMI not present or invalid.
-[    0.152290] NET: Registered PF_NETLINK/PF_ROUTE protocol family
-[    0.162256] DMA: preallocated 128 KiB GFP_KERNEL pool for atomic allocations
-[    0.162819] DMA: preallocated 128 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
-[    0.163081] DMA: preallocated 128 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
-[    0.166948] thermal_sys: Registered thermal governor 'step_wise'
-[    0.167250] cpuidle: using governor ladder
-[    0.167440] cpuidle: using governor menu
-[    0.168266] ASID allocator initialised with 32768 entries
-[    0.170165] Serial: AMBA PL011 UART driver
-[    0.198997] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
-[    0.201408] printk: console [ttyAMA0] enabled
-[    0.439481] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
-[    0.439952] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
-[    0.439995] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
-[    0.440021] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
-[    0.440046] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
-[    0.440068] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
-[    0.440094] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
-[    0.440117] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
-[    0.465224] ACPI: Interpreter disabled.
-[    0.467917] iommu: Default domain type: Passthrough
-[    0.469835] SCSI subsystem initialized
-[    0.472026] usbcore: registered new interface driver usbfs
-[    0.472306] usbcore: registered new interface driver hub
-[    0.472471] usbcore: registered new device driver usb
-[    0.490490] clocksource: Switched to clocksource arch_sys_counter
-[    0.492935] netfs: FS-Cache loaded
-[    0.493808] pnp: PnP ACPI: disabled
-[    0.502204] NET: Registered PF_INET protocol family
-[    0.503672] IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
-[    0.509923] tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 4096 bytes, linear)
-[    0.510032] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
-[    0.510146] TCP established hash table entries: 1024 (order: 1, 8192 bytes, linear)
-[    0.510326] TCP bind hash table entries: 1024 (order: 3, 32768 bytes, linear)
-[    0.510497] TCP: Hash tables configured (established 1024 bind 1024)
-[    0.512002] MPTCP token hash table entries: 256 (order: 1, 6144 bytes, linear)
-[    0.512318] UDP hash table entries: 256 (order: 2, 16384 bytes, linear)
-[    0.512557] UDP-Lite hash table entries: 256 (order: 2, 16384 bytes, linear)
-[    0.514019] NET: Registered PF_UNIX/PF_LOCAL protocol family
-[    0.514565] PCI: CLS 0 bytes, default 64
-[    0.579785] kvm [1]: HYP mode not available
-[    0.584531] workingset: timestamp_bits=42 max_order=15 bucket_order=0
-[    0.586504] squashfs: version 4.0 (2009/01/31) Phillip Lougher
-[    0.586568] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
-[    0.594964] 9p: Installing v9fs 9p2000 file system support
-[    0.609630] cryptd: max_cpu_qlen set to 1000
-[    0.610073] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 250)
-[    0.614637] atomic64_test: passed
-[    0.643904] pl061_gpio 9030000.pl061: PL061 GPIO chip registered
-[    0.646037] pci-host-generic 4010000000.pcie: host bridge /pcie@10000000 ranges:
-[    0.646673] pci-host-generic 4010000000.pcie:       IO 0x003eff0000..0x003effffff -> 0x0000000000
-[    0.647263] pci-host-generic 4010000000.pcie:      MEM 0x0010000000..0x003efeffff -> 0x0010000000
-[    0.647340] pci-host-generic 4010000000.pcie:      MEM 0x8000000000..0xffffffffff -> 0x8000000000
-[    0.648020] pci-host-generic 4010000000.pcie: Memory resource size exceeds max for 32 bits
-[    0.661204] pci-host-generic 4010000000.pcie: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
-[    0.662643] pci-host-generic 4010000000.pcie: PCI host bridge to bus 0000:00
-[    0.663049] pci_bus 0000:00: root bus resource [bus 00-ff]
-[    0.663157] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
-[    0.663226] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff]
-[    0.663258] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff]
-[    0.664586] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000 conventional PCI endpoint
-[    0.668258] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
-[    0.668548] pci 0000:00:01.0: BAR 0 [io  0x0000-0x001f]
-[    0.668650] pci 0000:00:01.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
-[    0.668792] pci 0000:00:01.0: ROM [mem 0x00000000-0x0007ffff pref]
-[    0.669234] pci 0000:00:02.0: [1af4:1005] type 00 class 0x00ff00 conventional PCI endpoint
-[    0.669318] pci 0000:00:02.0: BAR 0 [io  0x0000-0x001f]
-[    0.669374] pci 0000:00:02.0: BAR 1 [mem 0x00000000-0x00000fff]
-[    0.669413] pci 0000:00:02.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
-[    0.669908] pci 0000:00:03.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
-[    0.670070] pci 0000:00:03.0: BAR 0 [io  0x0000-0x001f]
-[    0.670156] pci 0000:00:03.0: BAR 1 [mem 0x00000000-0x00000fff]
-[    0.670202] pci 0000:00:03.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
-[    0.670257] pci 0000:00:03.0: ROM [mem 0x00000000-0x0007ffff pref]
-[    0.672509] pci 0000:00:01.0: ROM [mem 0x10000000-0x1007ffff pref]: assigned
-[    0.672707] pci 0000:00:03.0: ROM [mem 0x10080000-0x100fffff pref]: assigned
-[    0.672872] pci 0000:00:01.0: BAR 4 [mem 0x8000000000-0x8000003fff 64bit pref]: assigned
-[    0.673029] pci 0000:00:02.0: BAR 4 [mem 0x8000004000-0x8000007fff 64bit pref]: assigned
-[    0.673135] pci 0000:00:03.0: BAR 4 [mem 0x8000008000-0x800000bfff 64bit pref]: assigned
-[    0.673190] pci 0000:00:02.0: BAR 1 [mem 0x10100000-0x10100fff]: assigned
-[    0.673229] pci 0000:00:03.0: BAR 1 [mem 0x10101000-0x10101fff]: assigned
-[    0.673276] pci 0000:00:01.0: BAR 0 [io  0x1000-0x101f]: assigned
-[    0.673332] pci 0000:00:02.0: BAR 0 [io  0x1020-0x103f]: assigned
-[    0.673370] pci 0000:00:03.0: BAR 0 [io  0x1040-0x105f]: assigned
-[    0.673694] pci_bus 0000:00: resource 4 [io  0x0000-0xffff]
-[    0.673773] pci_bus 0000:00: resource 5 [mem 0x10000000-0x3efeffff]
-[    0.673810] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff]
-[    0.676843] hyperv_fb: Deprecated: use Hyper-V DRM driver instead
-[    0.676961] hv_vmbus: registering driver hyperv_fb
-[    0.812816] virtio-pci 0000:00:01.0: enabling device (0000 -> 0003)
-[    0.820915] virtio-pci 0000:00:02.0: enabling device (0000 -> 0003)
-[    0.823153] virtio-pci 0000:00:03.0: enabling device (0000 -> 0003)
-[    0.832047] Serial: 8250/16550 driver, 16 ports, IRQ sharing enabled
-[    0.837843] SuperH (H)SCI(F) driver initialized
-[    0.898951] loop: module loaded
-[    0.900088] hv_vmbus: registering driver hv_storvsc
-[    0.921254] hv_vmbus: registering driver hv_netvsc
-[    0.923936] usbcore: registered new interface driver usb-storage
-[    0.926661] hv_vmbus: registering driver hyperv_keyboard
-[    0.934563] rtc-pl031 9010000.pl031: registered as rtc0
-[    0.935168] rtc-pl031 9010000.pl031: setting system clock to 2026-08-17T00:50:42 UTC (1786927842)
-[    0.939006] sdhci: Secure Digital Host Controller Interface driver
-[    0.939174] sdhci: Copyright(c) Pierre Ossman
-[    0.939723] Synopsys Designware Multimedia Card Interface Driver
-[    0.940346] sdhci-pltfm: SDHCI platform and OF driver helper
-[    0.942293] hid: raw HID events driver (C) Jiri Kosina
-[    0.942693] usbcore: registered new interface driver usbhid
-[    0.942761] usbhid: USB HID core driver
-[    0.945294] NET: Registered PF_INET6 protocol family
-[    0.979723] Segment Routing with IPv6
-[    0.979964] In-situ OAM (IOAM) with IPv6
-[    0.980523] NET: Registered PF_PACKET protocol family
-[    0.981038] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
-[    0.992120] 8021q: 802.1Q VLAN Support v1.8
-[    0.992980] 9pnet: Installing 9P2000 support
-[    1.047168] Demotion targets for Node 0: null
-[    1.055432] clk: Disabling unused clocks
-[    1.055681] PM: genpd: Disabling unused power domains
-[    1.102073] Freeing unused kernel memory: 15936K
-[    1.104969] Run /init as init process
-[    2.650588] init: Console is alive
-[    2.763954] kmodloader: loading kernel modules from /etc/modules-boot.d/*
-[    2.794535] pps_core: LinuxPPS API ver. 1 registered
-[    2.794632] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
-[    2.838963] PTP clock support registered
-[    2.856072] VMware vmxnet3 virtual NIC driver - version 1.9.0.0-k-NAPI
-[    2.877982] e1000e: Intel(R) PRO/1000 Network Driver
-[    2.878081] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
-[    2.880187] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
-[    2.898278] init: - preinit -
-[    4.690457] 8021q: adding VLAN 0 to HW filter on device eth0
+[    0.000064] sched_clock: 57 bits at 63MHz, resolution 16ns, wraps every 4398046511096ns
+[    0.003462] Console: colour dummy device 80x25
+[    0.003923] printk: legacy console [tty0] enabled
+[    0.007936] Calibrating delay loop (skipped), value calculated using timer frequency.. 125.00 BogoMIPS (lpj=625000)
+[    0.008082] pid_max: default: 32768 minimum: 301
+[    0.013804] Mount-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.013859] Mountpoint-cache hash table entries: 512 (order: 0, 4096 bytes, linear)
+[    0.040088] cacheinfo: Unable to detect cache hierarchy for CPU 0
+[    0.051145] rcu: Hierarchical SRCU implementation.
+[    0.051261] rcu: 	Max phase no-delay instances is 1000.
+[    0.054353] EFI services will not be available.
+[    0.055131] smp: Bringing up secondary CPUs ...
+[    0.055869] smp: Brought up 1 node, 1 CPU
+[    0.055914] SMP: Total of 1 processors activated.
+[    0.055958] CPU: All CPU(s) started at EL1
+[    0.056231] CPU features: detected: 32-bit EL0 Support
+[    0.056267] CPU features: detected: 32-bit EL1 Support
+[    0.056351] CPU features: detected: CRC32 instructions
+[    0.066103] alternatives: applying system-wide alternatives
+[    0.075284] CPU features: emulated: Privileged Access Never (PAN) using TTBR0_EL1 switching
+[    0.088719] Memory: 55992K/131072K available (13312K kernel code, 1638K rwdata, 5084K rodata, 15936K init, 766K bss, 40972K reserved, 32768K cma-reserved)
+[    0.124288] posixtimers hash table entries: 512 (order: 1, 8192 bytes, linear)
+[    0.124670] futex hash table entries: 256 (16384 bytes on 1 NUMA nodes, total 16 KiB, linear).
+[    0.126944] 2G module region forced by RANDOMIZE_MODULE_REGION_FULL
+[    0.126999] 0 pages in range for non-PLT usage
+[    0.127046] 515040 pages in range for PLT usage
+[    0.128391] pinctrl core: initialized pinctrl subsystem
+[    0.139986] DMI not present or invalid.
+[    0.153959] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.163881] DMA: preallocated 128 KiB GFP_KERNEL pool for atomic allocations
+[    0.164433] DMA: preallocated 128 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.164690] DMA: preallocated 128 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.168520] thermal_sys: Registered thermal governor 'step_wise'
+[    0.168821] cpuidle: using governor ladder
+[    0.169011] cpuidle: using governor menu
+[    0.169875] ASID allocator initialised with 32768 entries
+[    0.171737] Serial: AMBA PL011 UART driver
+[    0.200860] 9000000.pl011: ttyAMA0 at MMIO 0x9000000 (irq = 13, base_baud = 0) is a PL011 rev1
+[    0.203275] printk: console [ttyAMA0] enabled
+[    0.442480] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.442923] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.442965] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.442993] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.443019] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.443042] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.443068] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.443091] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.468446] ACPI: Interpreter disabled.
+[    0.471127] iommu: Default domain type: Passthrough
+[    0.473088] SCSI subsystem initialized
+[    0.475350] usbcore: registered new interface driver usbfs
+[    0.475651] usbcore: registered new interface driver hub
+[    0.475813] usbcore: registered new device driver usb
+[    0.493574] clocksource: Switched to clocksource arch_sys_counter
+[    0.496023] netfs: FS-Cache loaded
+[    0.496897] pnp: PnP ACPI: disabled
+[    0.505600] NET: Registered PF_INET protocol family
+[    0.507037] IP idents hash table entries: 2048 (order: 2, 16384 bytes, linear)
+[    0.513029] tcp_listen_portaddr_hash hash table entries: 256 (order: 0, 4096 bytes, linear)
+[    0.513136] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.513275] TCP established hash table entries: 1024 (order: 1, 8192 bytes, linear)
+[    0.513468] TCP bind hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.513627] TCP: Hash tables configured (established 1024 bind 1024)
+[    0.515093] MPTCP token hash table entries: 256 (order: 1, 6144 bytes, linear)
+[    0.515419] UDP hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.515664] UDP-Lite hash table entries: 256 (order: 2, 16384 bytes, linear)
+[    0.517083] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.517651] PCI: CLS 0 bytes, default 64
+[    0.582906] kvm [1]: HYP mode not available
+[    0.587585] workingset: timestamp_bits=42 max_order=15 bucket_order=0
+[    0.589470] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.589536] jffs2: version 2.2 (NAND) (SUMMARY) (LZMA) (RTIME) (CMODE_PRIORITY) (c) 2001-2006 Red Hat, Inc.
+[    0.597999] 9p: Installing v9fs 9p2000 file system support
+[    0.602789] cryptd: max_cpu_qlen set to 1000
+[    0.603185] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 250)
+[    0.616954] atomic64_test: passed
+[    0.646269] pl061_gpio 9030000.pl061: PL061 GPIO chip registered
+[    0.648529] pci-host-generic 4010000000.pcie: host bridge /pcie@10000000 ranges:
+[    0.649152] pci-host-generic 4010000000.pcie:       IO 0x003eff0000..0x003effffff -> 0x0000000000
+[    0.649724] pci-host-generic 4010000000.pcie:      MEM 0x0010000000..0x003efeffff -> 0x0010000000
+[    0.649803] pci-host-generic 4010000000.pcie:      MEM 0x8000000000..0xffffffffff -> 0x8000000000
+[    0.650492] pci-host-generic 4010000000.pcie: Memory resource size exceeds max for 32 bits
+[    0.663782] pci-host-generic 4010000000.pcie: ECAM at [mem 0x4010000000-0x401fffffff] for [bus 00-ff]
+[    0.665241] pci-host-generic 4010000000.pcie: PCI host bridge to bus 0000:00
+[    0.665616] pci_bus 0000:00: root bus resource [bus 00-ff]
+[    0.665721] pci_bus 0000:00: root bus resource [io  0x0000-0xffff]
+[    0.665792] pci_bus 0000:00: root bus resource [mem 0x10000000-0x3efeffff]
+[    0.665824] pci_bus 0000:00: root bus resource [mem 0x8000000000-0xffffffffff]
+[    0.667107] pci 0000:00:00.0: [1b36:0008] type 00 class 0x060000 conventional PCI endpoint
+[    0.670763] pci 0000:00:01.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
+[    0.671063] pci 0000:00:01.0: BAR 0 [io  0x0000-0x001f]
+[    0.671166] pci 0000:00:01.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    0.671313] pci 0000:00:01.0: ROM [mem 0x00000000-0x0007ffff pref]
+[    0.671640] pci 0000:00:02.0: [1af4:1005] type 00 class 0x00ff00 conventional PCI endpoint
+[    0.671723] pci 0000:00:02.0: BAR 0 [io  0x0000-0x001f]
+[    0.671775] pci 0000:00:02.0: BAR 1 [mem 0x00000000-0x00000fff]
+[    0.671812] pci 0000:00:02.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    0.672118] pci 0000:00:03.0: [1af4:1000] type 00 class 0x020000 conventional PCI endpoint
+[    0.672236] pci 0000:00:03.0: BAR 0 [io  0x0000-0x001f]
+[    0.672701] pci 0000:00:03.0: BAR 1 [mem 0x00000000-0x00000fff]
+[    0.672773] pci 0000:00:03.0: BAR 4 [mem 0x00000000-0x00003fff 64bit pref]
+[    0.672836] pci 0000:00:03.0: ROM [mem 0x00000000-0x0007ffff pref]
+[    0.675152] pci 0000:00:01.0: ROM [mem 0x10000000-0x1007ffff pref]: assigned
+[    0.675386] pci 0000:00:03.0: ROM [mem 0x10080000-0x100fffff pref]: assigned
+[    0.675522] pci 0000:00:01.0: BAR 4 [mem 0x8000000000-0x8000003fff 64bit pref]: assigned
+[    0.675679] pci 0000:00:02.0: BAR 4 [mem 0x8000004000-0x8000007fff 64bit pref]: assigned
+[    0.675773] pci 0000:00:03.0: BAR 4 [mem 0x8000008000-0x800000bfff 64bit pref]: assigned
+[    0.675822] pci 0000:00:02.0: BAR 1 [mem 0x10100000-0x10100fff]: assigned
+[    0.675859] pci 0000:00:03.0: BAR 1 [mem 0x10101000-0x10101fff]: assigned
+[    0.675906] pci 0000:00:01.0: BAR 0 [io  0x1000-0x101f]: assigned
+[    0.675962] pci 0000:00:02.0: BAR 0 [io  0x1020-0x103f]: assigned
+[    0.676001] pci 0000:00:03.0: BAR 0 [io  0x1040-0x105f]: assigned
+[    0.676359] pci_bus 0000:00: resource 4 [io  0x0000-0xffff]
+[    0.676418] pci_bus 0000:00: resource 5 [mem 0x10000000-0x3efeffff]
+[    0.676453] pci_bus 0000:00: resource 6 [mem 0x8000000000-0xffffffffff]
+[    0.679654] hyperv_fb: Deprecated: use Hyper-V DRM driver instead
+[    0.679771] hv_vmbus: registering driver hyperv_fb
+[    0.826076] virtio-pci 0000:00:01.0: enabling device (0000 -> 0003)
+[    0.833906] virtio-pci 0000:00:02.0: enabling device (0000 -> 0003)
+[    0.835646] virtio-pci 0000:00:03.0: enabling device (0000 -> 0003)
+[    0.844991] Serial: 8250/16550 driver, 16 ports, IRQ sharing enabled
+[    0.850808] SuperH (H)SCI(F) driver initialized
+[    0.911518] loop: module loaded
+[    0.912611] hv_vmbus: registering driver hv_storvsc
+[    0.932889] hv_vmbus: registering driver hv_netvsc
+[    0.935594] usbcore: registered new interface driver usb-storage
+[    0.938360] hv_vmbus: registering driver hyperv_keyboard
+[    0.946592] rtc-pl031 9010000.pl031: registered as rtc0
+[    0.947164] rtc-pl031 9010000.pl031: setting system clock to 2026-08-18T00:50:00 UTC (1787014200)
+[    0.950598] sdhci: Secure Digital Host Controller Interface driver
+[    0.950672] sdhci: Copyright(c) Pierre Ossman
+[    0.951542] Synopsys Designware Multimedia Card Interface Driver
+[    0.952301] sdhci-pltfm: SDHCI platform and OF driver helper
+[    0.954346] hid: raw HID events driver (C) Jiri Kosina
+[    0.954746] usbcore: registered new interface driver usbhid
+[    0.954809] usbhid: USB HID core driver
+[    0.957426] NET: Registered PF_INET6 protocol family
+[    0.992468] Segment Routing with IPv6
+[    0.992682] In-situ OAM (IOAM) with IPv6
+[    0.993246] NET: Registered PF_PACKET protocol family
+[    0.993734] bridge: filtering via arp/ip/ip6tables is no longer available by default. Update your scripts to load br_netfilter if you need this.
+[    1.004929] 8021q: 802.1Q VLAN Support v1.8
+[    1.005795] 9pnet: Installing 9P2000 support
+[    1.060501] Demotion targets for Node 0: null
+[    1.069115] clk: Disabling unused clocks
+[    1.069397] PM: genpd: Disabling unused power domains
+[    1.116170] Freeing unused kernel memory: 15936K
+[    1.119077] Run /init as init process
+[    2.673450] init: Console is alive
+[    2.786718] kmodloader: loading kernel modules from /etc/modules-boot.d/*
+[    2.817000] pps_core: LinuxPPS API ver. 1 registered
+[    2.817086] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    2.861244] PTP clock support registered
+[    2.877837] VMware vmxnet3 virtual NIC driver - version 1.9.0.0-k-NAPI
+[    2.898441] e1000e: Intel(R) PRO/1000 Network Driver
+[    2.898528] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    2.900383] kmodloader: done loading kernel modules from /etc/modules-boot.d/*
+[    2.912921] init: - preinit -
+[    4.711130] 8021q: adding VLAN 0 to HW filter on device eth0
 Press the [f] key and hit [enter] to enter failsafe mode
 Press the [1], [2], [3] or [4] key and hit [enter] to select the debug level
 - generating board file -
-[   10.398863] procd: - early -
-[   11.458898] procd: - ubus -
-[   11.667290] procd: - init -
+[   10.429292] procd: - early -
+[   11.485395] procd: - ubus -
+[   11.694407] procd: - init -
 Please press Enter to activate this console.
 root
-login[1194]: root login on 'ttyAMA0'
+login[1195]: root login on 'ttyAMA0'
 
 
 BusyBox v1.38.0 (2026-05-13 02:19:59 UTC) built-in shell (ash)
@@ -239,7 +239,7 @@ BusyBox v1.38.0 (2026-05-13 02:19:59 UTC) built-in shell (ash)
  |_______||   __|_____|__|__||________||__|  |____|
           |__| W I R E L E S S   F R E E D O M
  -----------------------------------------------------
- OpenWrt SNAPSHOT, r35836-20d94d5a2b
+ OpenWrt SNAPSHOT, r35840-1a77cc5e12
  -----------------------------------------------------
 
  === WARNING! =====================================
@@ -249,18 +249,18 @@ BusyBox v1.38.0 (2026-05-13 02:19:59 UTC) built-in shell (ash)
  --------------------------------------------------
 
 root@(none):~# dmesg -n 1
-root@(none):~# echo 'YCAM''YKSWVQ'
-YCAMYKSWVQ
+root@(none):~# echo 'UEEW''HAHZJY'
+UEEWHAHZJY
 root@(none):~# run() { echo -n "$MARKER"; sh -c "$@"; echo "$MARKER $?"; }
-root@(none):~# echo 'GCZE''LZYNOV'
-GCZELZYNOV
-root@(none):~# MARKER='TOOS''AOFXYL' run 'ubus wait_for network.interface.lan'
-TOOSAOFXYLTOOSAOFXYL 0
-root@OpenWrt:~# echo 'NMSQ''HTWNSK'
-NMSQHTWNSK
-root@OpenWrt:~# MARKER='ZSLP''JFGUKJ' run 'ubus call network.interface.lan statu
+root@(none):~# echo 'EXCA''VLFSKB'
+EXCAVLFSKB
+root@(none):~# MARKER='HYQS''VLTNQT' run 'ubus wait_for network.interface.lan'
+HYQSVLTNQTHYQSVLTNQT 0
+root@OpenWrt:~# echo 'OKTX''PBJXKM'
+OKTXPBJXKM
+root@OpenWrt:~# MARKER='QWUG''QHLTVJ' run 'ubus call network.interface.lan statu
 s '"'"'{}'"'"''
-ZSLPJFGUKJ{
+QWUGQHLTVJ{
 	"up": true,
 	"pending": false,
 	"available": true,
@@ -290,10 +290,10 @@ ZSLPJFGUKJ{
 	],
 	"ipv6-prefix-assignment": [
 		{
-			"address": "fd43:d270:89e5::",
+			"address": "fd67:202:d605::",
 			"mask": 60,
 			"local-address": {
-				"address": "fd43:d270:89e5::1",
+				"address": "fd67:202:d605::1",
 				"mask": 60
 			}
 		}
@@ -334,39 +334,39 @@ ZSLPJFGUKJ{
 		
 	}
 }
-ZSLPJFGUKJ 0
-root@OpenWrt:~# echo 'LGUH''TWCAQG'
-LGUHTWCAQG
-root@OpenWrt:~# MARKER='LSOB''OXTWUF' run true
-LSOBOXTWUFLSOBOXTWUF 0
-root@OpenWrt:~# echo 'YTCS''UEJAKX'
-YTCSUEJAKX
-root@OpenWrt:~# MARKER='VVJF''LGVKKE' run 'source /etc/os-release; echo $BUILD_I
+QWUGQHLTVJ 0
+root@OpenWrt:~# echo 'BCYZ''KLPYYT'
+BCYZKLPYYT
+root@OpenWrt:~# MARKER='QBPM''MXGOLZ' run true
+QBPMMXGOLZQBPMMXGOLZ 0
+root@OpenWrt:~# echo 'YALK''CEBACN'
+YALKCEBACN
+root@OpenWrt:~# MARKER='SEPH''PMNMEE' run 'source /etc/os-release; echo $BUILD_I
 D'
-VVJFLGVKKEr35836-20d94d5a2b
-VVJFLGVKKE 0
-root@OpenWrt:~# echo 'KAWK''NOEJGE'
-KAWKNOEJGE
-root@OpenWrt:~# MARKER='ZCLG''LZZMWG' run 'ls /etc/dropbear/dropbear_rsa_host_ke
+SEPHPMNMEEr35840-1a77cc5e12
+SEPHPMNMEE 0
+root@OpenWrt:~# echo 'BNCU''LLFETY'
+BNCULLFETY
+root@OpenWrt:~# MARKER='ZPGZ''CFWXXE' run 'ls /etc/dropbear/dropbear_rsa_host_ke
 y'
-ZCLGLZZMWG[0;0m/etc/dropbear/dropbear_rsa_host_key[m
-ZCLGLZZMWG 0
-root@OpenWrt:~# echo 'ACZZ''MPNNNB'
-ACZZMPNNNB
-root@OpenWrt:~# MARKER='KNXY''UMZMHC' run 'netstat -tlpn | grep 0.0.0.0:22'
-KNXYUMZMHCtcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1965/dropbear
-KNXYUMZMHC 0
-root@OpenWrt:~# echo 'QZZL''HBMWPX'
-QZZLHBMWPX
-root@OpenWrt:~# MARKER='HMUO''OYNYZP' run 'dmesg | grep br-lan | grep forwarding
+ZPGZCFWXXE[0;0m/etc/dropbear/dropbear_rsa_host_key[m
+ZPGZCFWXXE 0
+root@OpenWrt:~# echo 'OVVC''MLTPKJ'
+OVVCMLTPKJ
+root@OpenWrt:~# MARKER='YMQN''AQFXEB' run 'netstat -tlpn | grep 0.0.0.0:22'
+YMQNAQFXEBtcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1964/dropbear
+YMQNAQFXEB 0
+root@OpenWrt:~# echo 'GGLB''BWFMGB'
+GGLBBWFMGB
+root@OpenWrt:~# MARKER='ZLSZ''FCHAJU' run 'dmesg | grep br-lan | grep forwarding
 '
-HMUOOYNYZP[   42.159887] br-lan: port 1(eth0) entered forwarding state
-HMUOOYNYZP 0
-root@OpenWrt:~# echo 'MLMV''YMNFJV'
-MLMVYMNFJV
-root@OpenWrt:~# MARKER='YQOL''NJTBEB' run 'ubus call network.interface.lan statu
+ZLSZFCHAJU[   41.065343] br-lan: port 1(eth0) entered forwarding state
+ZLSZFCHAJU 0
+root@OpenWrt:~# echo 'CWAS''PBWBHG'
+CWASPBWBHG
+root@OpenWrt:~# MARKER='XPOZ''ZNCVQB' run 'ubus call network.interface.lan statu
 s '"'"'{}'"'"''
-YQOLNJTBEB{
+XPOZZNCVQB{
 	"up": true,
 	"pending": false,
 	"available": true,
@@ -396,10 +396,10 @@ YQOLNJTBEB{
 	],
 	"ipv6-prefix-assignment": [
 		{
-			"address": "fd43:d270:89e5::",
+			"address": "fd67:202:d605::",
 			"mask": 60,
 			"local-address": {
-				"address": "fd43:d270:89e5::1",
+				"address": "fd67:202:d605::1",
 				"mask": 60
 			}
 		}
@@ -440,25 +440,25 @@ YQOLNJTBEB{
 		
 	}
 }
-YQOLNJTBEB 0
-root@OpenWrt:~# echo 'MBAQ''TFMMUY'
-MBAQTFMMUY
-root@OpenWrt:~# MARKER='LFCQ''XKQOYV' run 'ip -o addr show dev br-lan'
-LFCQXKQOYV4: br-lan    inet 192.168.1.1/24 brd 192.168.1.255 scope global br-lan\       valid_lft forever preferred_lft forever
-4: br-lan    inet6 fd43:d270:89e5::1/60 scope global noprefixroute \       valid_lft forever preferred_lft forever
+XPOZZNCVQB 0
+root@OpenWrt:~# echo 'UFJK''EVBXAW'
+UFJKEVBXAW
+root@OpenWrt:~# MARKER='OFYA''OKTYQL' run 'ip -o addr show dev br-lan'
+OFYAOKTYQL4: br-lan    inet 192.168.1.1/24 brd 192.168.1.255 scope global br-lan\       valid_lft forever preferred_lft forever
+4: br-lan    inet6 fd67:202:d605::1/60 scope global noprefixroute \       valid_lft forever preferred_lft forever
 4: br-lan    inet6 fe80::5054:ff:fe12:3456/64 scope link \       valid_lft forever preferred_lft forever
-LFCQXKQOYV 0
-root@OpenWrt:~# echo 'HOKZ''CUFYTM'
-HOKZCUFYTM
-root@OpenWrt:~# MARKER='FKHL''WNGLAA' run 'ubus call network.interface.wan statu
+OFYAOKTYQL 0
+root@OpenWrt:~# echo 'HFWV''TAXKUZ'
+HFWVTAXKUZ
+root@OpenWrt:~# MARKER='OMCC''KPKNKO' run 'ubus call network.interface.wan statu
 s '"'"'{}'"'"''
-FKHLWNGLAA{
+OMCCKPKNKO{
 	"up": true,
 	"pending": false,
 	"available": true,
 	"autostart": true,
 	"dynamic": false,
-	"uptime": 32,
+	"uptime": 34,
 	"l3_device": "eth1",
 	"proto": "dhcp",
 	"device": "eth1",
@@ -527,5 +527,5 @@ FKHLWNGLAA{
 		"leasetime": 86400
 	}
 }
-FKHLWNGLAA 0
+OMCCKPKNKO 0
 root@OpenWrt:~# 
